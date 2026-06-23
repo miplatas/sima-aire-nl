@@ -1,0 +1,11 @@
+{
+  "domain": "sima_aire_nl",
+  "name": "SIMA Aire Nuevo León",
+  "version": "1.0.0",
+  "documentation": "https://github.com/miplatas/sima_aire_nl",
+  "issue_tracker": "https://github.com/miplatas/sima_aire_nl/issues",
+  "codeowners": ["@miplatas"],
+  "requirements": [],
+  "iot_class": "cloud_polling",
+  "config_flow": true
+}

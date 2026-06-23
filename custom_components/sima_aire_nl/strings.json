@@ -1,0 +1,14 @@
+{
+  "title": "SIMA Aire Nuevo León",
+  "config": {
+    "step": {
+      "user": {
+        "title": "SIMA Aire Nuevo León",
+        "description": "Se crearán sensores para las 15 estaciones del AMM automáticamente."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Ya existe una instancia configurada."
+    }
+  }
+}
