@@ -26,34 +26,42 @@ Los datos se actualizan cada hora, igual que el sitio oficial.
 | suroeste2 | SUROESTE 2 | San Pedro |
 | este | ESTE | Pesquería |
 
-## Sensores por estación
+## Sensores por estación (4 entidades por dispositivo)
 
-| Sensor | Descripción |
-|---|---|
-| `sensor.sima_<est>_indice_ias` | Índice IAS contaminante dominante |
-| `sensor.sima_<est>_pm10nc` | PM10 (IAS) |
-| `sensor.sima_<est>_pm25nc` | PM2.5 (IAS) |
-| `sensor.sima_<est>_o3nc` | Ozono (IAS) |
-| `sensor.sima_<est>_no2nc` | NO2 (IAS) |
-| `sensor.sima_<est>_so21nc` | SO2 (IAS) |
-| `sensor.sima_<est>_conc` | CO (IAS) |
+| Entidad | Descripción | Tipo |
+|---|---|---|
+| `sensor.sima_<est>_indice_ias` | Índice IAS del contaminante dominante | Numérico (IAS) |
+| `sensor.sima_<est>_calidad_del_aire` | Calidad del aire: Buena, Aceptable, Mala, Muy Mala, Extremadamente Mala | Texto (semáforo) |
+| `sensor.sima_<est>_pm10nc` | Concentración de PM10 | Numérico (µg/m³) |
+| `sensor.sima_<est>_pm25nc` | Concentración de PM2.5 | Numérico (µg/m³) |
 
-## Cámara
-
-| Entidad | Descripción |
-|---|---|
-| `camera.sima_mapa_calidad_del_aire` | Vista del mapa oficial de SIMA |
-
-## Atributos del sensor IAS
+## Atributos del sensor Índice IAS
 
 ```yaml
-contaminante_dominante: "O3"
-concentracion: "32"
-calidad: "Buena"
-riesgo: "Bajo"
-semaforo: "green"   # green | yellow | orange | red | purple | gray
+contaminante_dominante: "PM25"      # Contaminante que genera el IAS más alto
+concentracion: "9"                  # Concentración del contaminante dominante
+calidad: "Buena"                    # Calidad del aire
+riesgo: "Bajo"                      # Nivel de riesgo
+semaforo: "green"                   # Color del semáforo (green | yellow | orange | red | purple | gray)
 municipio: "Monterrey"
-timestamp: "2026-06-23 17:00"
+timestamp: "2026-06-24 08:00"
+ias_pm10: 18                        # IAS específico de PM10
+ias_pm25: 30                        # IAS específico de PM2.5
+ias_o3: 10                          # IAS específico de O3
+ias_no2: 5                          # IAS específico de NO2
+ias_so2: 5                          # IAS específico de SO2
+ias_co: 4                           # IAS específico de CO
+```
+
+## Atributos del sensor Calidad del Aire
+
+```yaml
+ias: 30                             # Valor numérico del índice
+contaminante_dominante: "PM25"
+riesgo: "Bajo"
+semaforo: "green"
+municipio: "Monterrey"
+timestamp: "2026-06-24 08:00"
 ```
 
 ## Semáforo

@@ -22,13 +22,18 @@ STATIONS = {
     "este":      ("ESTE",       "Pesquería",      25.7905833, -100.078411),
 }
 
+# Parámetros de concentración a exponer como sensores (PM10, PM2.5)
 PARAMETERS = {
     "PM10Nc":  {"name": "PM10",  "unit": "µg/m³", "icon": "mdi:blur"},
     "PM25Nc":  {"name": "PM2.5", "unit": "µg/m³", "icon": "mdi:blur-radial"},
-    "O3Nc":    {"name": "O3",    "unit": "ppb",   "icon": "mdi:weather-hazy"},
-    "NO2Nc":   {"name": "NO2",   "unit": "ppb",   "icon": "mdi:factory"},
-    "SO21Nc":  {"name": "SO2",   "unit": "ppb",   "icon": "mdi:chemical-weapon"},
-    "CONc":    {"name": "CO",    "unit": "ppm",   "icon": "mdi:smoke"},
+}
+
+# Parámetros adicionales cuyo IAS se incluye como atributos del sensor Índice IAS
+PARAMETERS_IAS_ATTRS = {
+    "O3Nc":    {"name": "O3",    "unit": "ppb"},
+    "NO2Nc":   {"name": "NO2",   "unit": "ppb"},
+    "SO21Nc":  {"name": "SO2",   "unit": "ppb"},
+    "CONc":    {"name": "CO",    "unit": "ppm"},
 }
 
 IAS_LEVELS = [
