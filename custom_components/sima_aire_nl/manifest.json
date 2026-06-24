@@ -1,7 +1,7 @@
 {
   "domain": "sima_aire_nl",
   "name": "SIMA Aire Nuevo León",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "documentation": "https://github.com/miplatas/sima_aire_nl",
   "issue_tracker": "https://github.com/miplatas/sima_aire_nl/issues",
   "codeowners": ["@miplatas"],

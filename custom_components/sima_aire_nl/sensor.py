@@ -40,7 +40,6 @@ class SimaBaseSensor(CoordinatorEntity, SensorEntity):
         return {
             "identifiers": {(DOMAIN, self._station_key)},
             "name": f"SIMA {self._station_name}",
-            "manufacturer": "Gobierno de Nuevo León — SIMA",
             "model": "Estación de Monitoreo Ambiental",
             "configuration_url": "https://aire.nl.gob.mx",
         }
