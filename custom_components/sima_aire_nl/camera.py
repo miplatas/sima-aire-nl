@@ -28,10 +28,21 @@ class SimaMapCamera(Camera):
     def __init__(self, hass: HomeAssistant, entry_id: str) -> None:
         super().__init__()
         self.hass = hass
+        self._entry_id = entry_id
         self._attr_unique_id = f"sima_map_{entry_id}"
         self._attr_name = "SIMA Mapa Calidad del Aire"
         self._attr_content_type = "image/png"
         self._attr_icon = "mdi:map-search"
+
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, f"map_{self._entry_id}")},
+            "name": "SIMA Mapa Calidad del Aire",
+            "manufacturer": "SIMA Aire NL",
+            "model": "Mapa de Calidad del Aire",
+            "configuration_url": URL_SIMA,
+        }
 
     @property
     def extra_state_attributes(self):
