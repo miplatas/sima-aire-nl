@@ -7,7 +7,7 @@ from .const import DOMAIN
 from .coordinator import SimaCoordinator
 
 _LOGGER = logging.getLogger(__name__)
-PLATFORMS = ["sensor"]
+PLATFORMS = ["sensor", "camera"]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:

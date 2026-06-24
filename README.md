@@ -38,6 +38,12 @@ Los datos se actualizan cada hora, igual que el sitio oficial.
 | `sensor.sima_<est>_so21nc` | SO2 (IAS) |
 | `sensor.sima_<est>_conc` | CO (IAS) |
 
+## Cámara
+
+| Entidad | Descripción |
+|---|---|
+| `camera.sima_mapa_calidad_del_aire` | Vista del mapa oficial de SIMA |
+
 ## Atributos del sensor IAS
 
 ```yaml
