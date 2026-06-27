@@ -13,6 +13,8 @@ Los datos se actualizan cada hora, igual que el sitio oficial.
 
 ## Estaciones (15 en total)
 
+![Mapa de Monterrey, N.L., México](images/estaciones.png)
+
 | Clave | Nombre | Municipio |
 |---|---|---|
 | centro | CENTRO | Monterrey |
@@ -41,6 +43,10 @@ Los datos se actualizan cada hora, igual que el sitio oficial.
 | `sensor.sima_<est>_calidad_del_aire` | Calidad del aire: Buena, Aceptable, Mala, Muy Mala, Extremadamente Mala | Texto (semáforo) |
 | `sensor.sima_<est>_pm10nc` | Concentración de PM10 | Numérico (µg/m³) |
 | `sensor.sima_<est>_pm25nc` | Concentración de PM2.5 | Numérico (µg/m³) |
+
+### Ejemplo de información recabada el día 26 de junio 2026 de 8 a 21 horas
+
+![Mapa de Monterrey, N.L., México](images/history.png)
 
 ---
 
