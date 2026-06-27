@@ -1,10 +1,15 @@
 # SIMA Aire Nuevo León
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/miplatas/time-spent-pie-card?display_name=tag)](https://github.com/miplatas/time-spent-pie-card/releases)
+[![GitHub last commit](https://img.shields.io/github/last-commit/miplatas/time-spent-pie-card)](https://github.com/miplatas/time-spent-pie-card/commits/main)
+[![PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?logo=paypal&logoColor=white)](https://paypal.me/miplatas)
 
 Integración para Home Assistant que expone los datos de calidad del aire del **Sistema Integral de Monitoreo Ambiental (SIMA)** del Gobierno del Estado de Nuevo León — [aire.nl.gob.mx](https://aire.nl.gob.mx).
 
 Los datos se actualizan cada hora, igual que el sitio oficial.
+
+---
 
 ## Estaciones (15 en total)
 
@@ -26,6 +31,8 @@ Los datos se actualizan cada hora, igual que el sitio oficial.
 | suroeste2 | SUROESTE 2 | San Pedro |
 | este | ESTE | Pesquería |
 
+---
+
 ## Sensores por estación (4 entidades por dispositivo)
 
 | Entidad | Descripción | Tipo |
@@ -34,6 +41,8 @@ Los datos se actualizan cada hora, igual que el sitio oficial.
 | `sensor.sima_<est>_calidad_del_aire` | Calidad del aire: Buena, Aceptable, Mala, Muy Mala, Extremadamente Mala | Texto (semáforo) |
 | `sensor.sima_<est>_pm10nc` | Concentración de PM10 | Numérico (µg/m³) |
 | `sensor.sima_<est>_pm25nc` | Concentración de PM2.5 | Numérico (µg/m³) |
+
+---
 
 ## Atributos del sensor Índice IAS
 
@@ -53,6 +62,8 @@ ias_so2: 5                          # IAS específico de SO2
 ias_co: 4                           # IAS específico de CO
 ```
 
+---
+
 ## Atributos del sensor Calidad del Aire
 
 ```yaml
@@ -63,6 +74,8 @@ semaforo: "green"
 municipio: "Monterrey"
 timestamp: "2026-06-24 08:00"
 ```
+
+---
 
 ## Semáforo
 
@@ -75,9 +88,17 @@ timestamp: "2026-06-24 08:00"
 | 🟣 purple | Extremadamente mala | Extremadamente alto | >200 |
 | ⬜ gray | Sin datos / Mantenimiento | — | — |
 
+---
+
 ## Instalación vía HACS
 
 1. HACS → ⋮ → Repositorios personalizados
 2. URL: `https://github.com/miplatas/sima_aire_nl` — Categoría: **Integración**
 3. Instalar → Reiniciar HA
 4. Ajustes → Dispositivos y servicios → Agregar → **SIMA Aire Nuevo León**
+
+---
+
+## License
+
+GNU GENERAL PUBLIC LICENSE V3. — see [LICENSE](LICENSE)
