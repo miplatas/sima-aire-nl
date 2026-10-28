@@ -26,6 +26,12 @@ STATIONS = {
 PARAMETERS = {
     "PM10Nc":  {"name": "PM10",  "unit": "µg/m³", "icon": "mdi:blur"},
     "PM25Nc":  {"name": "PM2.5", "unit": "µg/m³", "icon": "mdi:blur-radial"},
+    "O3Nc":    {"name": "O3",    "unit": "ppb",   "icon": "mdi:molecule"},
+    # El SIMA dejó de publicar la concentración de NO2, SO2 y CO (arrayIMKTodo8-10).
+    # Descomentar si vuelven a publicarse (y ajustar _CONCENTRATION_ARRAYS en coordinator.py).
+    # "NO2Nc":   {"name": "NO2",   "unit": "ppb",   "icon": "mdi:molecule"},
+    # "SO21Nc":  {"name": "SO2",   "unit": "ppb",   "icon": "mdi:molecule"},
+    # "CONc":    {"name": "CO",    "unit": "ppm",   "icon": "mdi:molecule-co"},
 }
 
 # Parámetros adicionales cuyo IAS se incluye como atributos del sensor Índice IAS

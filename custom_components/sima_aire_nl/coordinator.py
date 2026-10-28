@@ -23,7 +23,15 @@ class SimaCoordinator(DataUpdateCoordinator):
         "CO": "CONc",
     }
 
+    # Matrices del HTML con concentraciones por estación.
+    # 5 = PM10, 6 = PM2.5, 7 = O3.
+    # 8, 9 y 10 (probablemente NO2, SO2 y CO) dejaron de publicarse en el HTML
+    # del SIMA (oct 2026). Si vuelven, cambiar a range(5, 11) y reactivar los
+    # sensores comentados en const.py (PARAMETERS).
+    _CONCENTRATION_ARRAYS = range(5, 8)
+
     def __init__(self, hass):
+        self._missing_logged = set()
         super().__init__(
             hass,
             _LOGGER,
@@ -49,7 +57,7 @@ class SimaCoordinator(DataUpdateCoordinator):
         data1 = self._extract_array(html, "arrayIMKTodo1")
         data11 = self._extract_array(html, "arrayIMKTodo11")
         concentration_data = []
-        for idx in range(5, 11):
+        for idx in self._CONCENTRATION_ARRAYS:
             concentration_data.extend(self._extract_array(html, f"arrayIMKTodo{idx}"))
 
         stations = {}
@@ -103,8 +111,17 @@ class SimaCoordinator(DataUpdateCoordinator):
         pattern = rf"var\s+{re.escape(var_name)}\s*=\s*(\[.*?\])\s*(?://|;|var\s)"
         match = re.search(pattern, html, re.DOTALL)
         if not match:
-            _LOGGER.warning("No se encontró %s en el HTML del SIMA", var_name)
+            # Avisar solo una vez por variable para no saturar el registro
+            if var_name not in self._missing_logged:
+                self._missing_logged.add(var_name)
+                _LOGGER.warning(
+                    "No se encontró %s en el HTML del SIMA (se omite; no se repetirá el aviso)",
+                    var_name,
+                )
+            else:
+                _LOGGER.debug("No se encontró %s en el HTML del SIMA", var_name)
             return []
+        self._missing_logged.discard(var_name)
         raw = match.group(1)
         raw = re.sub(r'//.*', '', raw)
         try:
