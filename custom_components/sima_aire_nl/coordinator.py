@@ -108,8 +108,10 @@ class SimaCoordinator(DataUpdateCoordinator):
         return {"timestamp": timestamp, "stations": stations}
 
     def _extract_array(self, html: str, var_name: str) -> list:
-        pattern = rf"var\s+{re.escape(var_name)}\s*=\s*(\[.*?\])\s*(?://|;|var\s)"
-        match = re.search(pattern, html, re.DOTALL)
+        # Solo se ubica el inicio del arreglo; raw_decode detecta su final aunque
+        # el SIMA omita el ";" (p. ej. arrayIMKTodo7 seguido de "let ...").
+        pattern = rf"var\s+{re.escape(var_name)}\s*=\s*(?=\[)"
+        match = re.search(pattern, html)
         if not match:
             # Avisar solo una vez por variable para no saturar el registro
             if var_name not in self._missing_logged:
@@ -122,10 +124,9 @@ class SimaCoordinator(DataUpdateCoordinator):
                 _LOGGER.debug("No se encontró %s en el HTML del SIMA", var_name)
             return []
         self._missing_logged.discard(var_name)
-        raw = match.group(1)
-        raw = re.sub(r'//.*', '', raw)
         try:
-            return json.loads(raw)
+            result, _ = json.JSONDecoder().raw_decode(html, match.end())
+            return result
         except json.JSONDecodeError as err:
             _LOGGER.error("Error parseando %s: %s", var_name, err)
             return []
